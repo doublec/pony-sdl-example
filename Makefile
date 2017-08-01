@@ -1,2 +1,2 @@
 sdl-example1: sdl-example/main.pony
-	ponyc sdl-example
+	ponyc --pic sdl-example
