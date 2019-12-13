@@ -9,7 +9,7 @@ use @SDL_DestroyWindow[None](window: Pointer[_SDLWindow])
 use @SDL_RenderClear[I32](renderer: Pointer[_SDLRenderer])
 use @SDL_RenderPresent[None](renderer: Pointer[_SDLRenderer])
 use @SDL_SetRenderDrawColor[I32](renderer: Pointer[_SDLRenderer], r: U8, g: U8, b: U8, a: U8)
-use @SDL_RenderFillRect[I32](renderer: Pointer[_SDLRenderer], rect: MaybePointer[_SDLRect])
+use @SDL_RenderFillRect[I32](renderer: Pointer[_SDLRenderer], rect: NullablePointer[_SDLRect])
 
 struct _SDLRect
   var x: I32 = 0
@@ -66,11 +66,11 @@ actor Game
    @SDL_RenderClear(renderer)
 
    @SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255)
-   @SDL_RenderFillRect(renderer, MaybePointer[_SDLRect].none())
+   @SDL_RenderFillRect(renderer, NullablePointer[_SDLRect].none())
 
    @SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255)
    let rect = _SDLRect(100, 100, 200, 200)
-   @SDL_RenderFillRect(renderer, MaybePointer[_SDLRect](rect))
+   @SDL_RenderFillRect(renderer, NullablePointer[_SDLRect](rect))
 
    @SDL_RenderPresent(renderer)
     
